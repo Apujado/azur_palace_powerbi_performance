@@ -1,0 +1,147 @@
+/// Inventaire de mesures DAX
+table DAX
+	lineageTag: bf1bf5fd-d060-422c-b76e-489b4a099815
+
+	/// Total d'avis clients
+	measure Total_Reviews = COUNT(FACT_Reviews[review_id])
+		formatString: 0
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: c018fee9-d305-45d3-94a9-7e7aacbd0e54
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	/// Score médian global de satisfaction. 
+	measure 'Global Median Score' = CALCULATE(MEDIAN(FACT_Reviews[score_overall]), ALL(DIM_hotel))
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: 1fe20ca0-f365-4b6f-86e9-37f2c298dad6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Score médian de l'année précédente (YoY).
+	measure 'Global Median Score N-1' =
+			
+			CALCULATE(
+			    MEDIAN(FACT_Reviews[score_overall]),
+			    SAMEPERIODLASTYEAR(DIM_Date[Date]),
+			    ALL(DIM_hotel)
+			)
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: a406a9ac-31a8-4a89-a2c7-e113bac8c688
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Écart de score absolu vs N-1.
+	measure 'Median Score YoY Delta' = [Global Median Score] - [Global Median Score N-1]
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: 5d53b646-3552-4343-9044-1c6dc7f784b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Total d'avis clients de l'année précédente
+	measure 'Total_Reviews N-1' =
+			
+			CALCULATE(
+			    [Total_Reviews],
+			    SAMEPERIODLASTYEAR(DIM_Date[Date])
+			)
+		formatString: 0
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: 0f17d323-2a72-4d6d-8aa7-f41cb623e0ad
+
+	/// Taux de croissance du volume d'avis client.
+	measure 'Total_Reviews YoY %' = ```
+			
+			VAR PrevYearReviews = [Total_Reviews N-1]
+			RETURN
+			DIVIDE(
+			    [Total_Reviews] - PrevYearReviews, 
+			    PrevYearReviews, 
+			    0
+			)
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: 8c6550ed-020a-485a-a5bc-e94301a2c780
+
+	/// Part du parc hôtelier au-dessus du standard.
+	measure '% Hotels Above Median' = ```
+			
+			VAR OverallMedian = [Global Median Score]
+			VAR TotalHotels = CALCULATE(DISTINCTCOUNT(DIM_hotel[hotel_id]), ALLSELECTED(DIM_hotel))
+			VAR HotelsAbove = 
+			    CALCULATE(
+			        DISTINCTCOUNT(DIM_hotel[hotel_id]),
+			        FILTER(
+			            ALLSELECTED(DIM_hotel),
+			            CALCULATE(MEDIAN(FACT_Reviews[score_overall])) >= OverallMedian
+			        )
+			    )
+			RETURN
+			    DIVIDE(HotelsAbove, TotalHotels, 0)
+			```
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: dcd17ac3-e773-4cb6-98ab-4cc2ad2e9052
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Région géographique affichant la meilleure performance.
+	measure 'Top Region Name' = ```
+			
+			VAR RegionScores = 
+			    ADDCOLUMNS(
+			        VALUES(DIM_hotel[Region]),
+			        "@Score", CALCULATE(MEDIAN(FACT_Reviews[score_overall]))
+			    )
+			VAR MaxScore = MAXX(RegionScores, [@Score])
+			RETURN
+			    MAXX(
+			        FILTER(RegionScores, [@Score] = MaxScore),
+			        DIM_hotel[Region]
+			    )
+			```
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: b740349d-286e-4f03-8d54-a956783fd844
+
+	/// Score de la Région géographique affichant la meilleure performance.
+	measure 'Top Region Score' =
+			
+			VAR TopRegion = [Top Region Name]
+			RETURN
+			    CALCULATE(
+			        MEDIAN(FACT_Reviews[score_overall]),
+			        DIM_hotel[Region] = TopRegion
+			    )
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: 0f184fbd-3967-4589-891e-2c975ad28082
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Le critère le mieux noté au niveau global
+	measure 'Top Criteria' = ```
+			
+			VAR CriteriaScores = 
+			    ADDCOLUMNS(
+			        VALUES('Radar Hotels'[Criteria]), 
+			        "@Score", CALCULATE(MEDIAN('Radar Hotels'[Score_Review]))
+			    )
+			VAR MaxCriteriaScore = MAXX(CriteriaScores, [@Score])
+			RETURN
+			    MAXX(
+			        FILTER(CriteriaScores, [@Score] = MaxCriteriaScore),
+			        'Radar Hotels'[Criteria]
+			    )
+			```
+		displayFolder: Time Intelligence & KPIs Macro
+		lineageTag: fb59a25f-4d2c-4f0e-a8f9-53a8474098d6
+
+	partition DAX = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Colonne 1" = _t]),
+				    #"Colonnes supprimées" = Table.RemoveColumns(Source,{"Colonne 1"})
+				in
+				  #"Colonnes supprimées"
+
+	annotation PBI_ResultType = Table
+

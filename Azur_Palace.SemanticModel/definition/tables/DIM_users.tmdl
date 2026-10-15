@@ -1,0 +1,87 @@
+/// Description :
+/// Table de dimension référençant les profils des utilisateurs / clients ayant interagi avec la plateforme ou rédigé des avis.
+/// 
+/// Granularité : Un profil client unique (user_id).
+/// 
+/// Informations clés : Données démographiques et comportementales (tranche d'âge, genre, pays, type de voyageur et date d'inscription). Liée à la table des faits des avis.
+table DIM_users
+	lineageTag: f064e8b5-af16-4fd5-894b-ac7d4a7613df
+
+	column user_id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: cce3becd-e67e-4005-933e-efc9d312c505
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_gender
+		dataType: string
+		lineageTag: f94e5da5-5f03-421c-89a8-0accd6a54f32
+		summarizeBy: none
+		sourceColumn: user_gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: bf46f174-4b99-4029-b956-2ab53f71f34b
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_group
+		dataType: string
+		lineageTag: 65439054-8382-4ca5-bdca-bef9b69e1ddd
+		summarizeBy: none
+		sourceColumn: age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column traveller_type
+		dataType: string
+		lineageTag: 58bfe824-70f5-42fd-ae84-743816ee72e3
+		summarizeBy: none
+		sourceColumn: traveller_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column join_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9a3cfa9d-a4d1-411e-ae75-f6ebd9f89c39
+		summarizeBy: none
+		sourceColumn: join_date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition DIM_users = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\pujad\OneDrive - APS Consult\Documents\FORMATION\PowerBi\Hotel Chain\Dataset\users.csv"), [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.None]),
+				  #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Valeur remplacée" = Table.ReplaceValue(#"En-têtes promus", "Female", "Féminin", Replacer.ReplaceText, {"user_gender"}),
+				  #"Type de colonne changé" = Table.TransformColumnTypes(#"Valeur remplacée", {{"user_id", Int64.Type}}),
+				  #"Valeur remplacée 1" = Table.ReplaceValue(#"Type de colonne changé", "Male", "Masculin", Replacer.ReplaceText, {"user_gender"}),
+				  #"Valeur remplacée 2" = Table.ReplaceValue(#"Valeur remplacée 1", "Other", "Non-binaire/Autre", Replacer.ReplaceText, {"user_gender"}),
+				  #"Lignes triées" = Table.Sort(#"Valeur remplacée 2", {{"age_group", Order.Ascending}}),
+				  #"Valeur remplacée 3" = Table.ReplaceValue(#"Lignes triées", "Family", "Famille", Replacer.ReplaceText, {"traveller_type"}),
+				  #"Valeur remplacée 4" = Table.ReplaceValue(#"Valeur remplacée 3", "Féminin", "Women", Replacer.ReplaceValue, {"user_gender"}),
+				  #"Valeur remplacée 5" = Table.ReplaceValue(#"Valeur remplacée 4", "Masculin", "Men", Replacer.ReplaceValue, {"user_gender"}),
+				  #"Valeur remplacée 6" = Table.ReplaceValue(#"Valeur remplacée 5", "Non-binaire/Autre", "Not Specified", Replacer.ReplaceValue, {"user_gender"}),
+				  #"Valeur remplacée 7" = Table.ReplaceValue(#"Valeur remplacée 6", "Famille", "Family", Replacer.ReplaceValue, {"traveller_type"}),
+				  #"Valeur remplacée 8" = Table.ReplaceValue(#"Valeur remplacée 7", "Not Specified", "Unspecified", Replacer.ReplaceValue, {"user_gender"})
+				in
+				  #"Valeur remplacée 8"
+
+	annotation PBI_ResultType = Table
+

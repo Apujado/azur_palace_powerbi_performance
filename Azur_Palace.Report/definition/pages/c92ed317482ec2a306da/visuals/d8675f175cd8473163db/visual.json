@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "d8675f175cd8473163db",
+  "position": {
+    "x": 108.54181452524374,
+    "y": 65.763847026950884,
+    "z": 1000,
+    "height": 315.74411694143942,
+    "width": 934.07260419775685,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Page 2 : Audit Opérationnel et Voix du Client ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Objectif :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  },
+                  {
+                    "value": " Plonger dans le détail granulaire de l'expérience client pour identifier précisément les leviers d'amélioration.",
+                    "textStyle": {
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "KPIs :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  },
+                  {
+                    "value": " Comparatif des scores (score_cleanliness, score_staff, etc.) et analyse de l'évolution temporelle.",
+                    "textStyle": {
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Visuels :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  },
+                  {
+                    "value": " Graphique en radar des critères par hôtel et matrice croisée pour repérer les anomalies de service.",
+                    "textStyle": {
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "18pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "8d8ec50e9d6495f21066"
+}

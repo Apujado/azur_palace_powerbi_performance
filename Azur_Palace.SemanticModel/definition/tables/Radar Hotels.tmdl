@@ -1,0 +1,109 @@
+table 'Radar Hotels'
+	lineageTag: 6fae91e2-0449-48b3-a0bf-90901ef0e0f5
+
+	column review_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 436bffee-286c-43d6-a050-95cd99097f84
+		summarizeBy: sum
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 49c1913a-2fa0-4d21-ba1e-b974a012b553
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 62ae7695-e520-46e1-8654-ac49646245f1
+		summarizeBy: none
+		sourceColumn: hotel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a564f566-c974-4115-8ec1-6087059dd0bd
+		summarizeBy: none
+		sourceColumn: review_date
+
+		variation Variation
+			isDefault
+			relationship: 95e24472-af3f-4639-bedd-c68e528b9b1b
+			defaultHierarchy: LocalDateTable_bd998317-41e9-4da6-8c2d-a73d91259b23.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Overall_Review
+		dataType: double
+		lineageTag: bd1b00ef-053d-47de-8451-95dde3d337a0
+		summarizeBy: sum
+		sourceColumn: Overall_Review
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Criteria
+		dataType: string
+		lineageTag: d2b7b9f8-e4d9-4781-9a9f-aa93eaf9661c
+		summarizeBy: none
+		sourceColumn: Criteria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score_Review
+		dataType: double
+		lineageTag: 4a838122-9f4b-46a4-a5ca-9a7ddcf08f03
+		summarizeBy: count
+		sourceColumn: Score_Review
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Score_Base
+		dataType: double
+		lineageTag: 41d76f53-43d6-4bb9-8020-f45a8f700abb
+		summarizeBy: sum
+		sourceColumn: Score_Base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Radar Hotels' = m
+		mode: import
+		source =
+				let
+				  Source = FACT_Reviews,
+				  #"Requêtes fusionnées" = Table.NestedJoin(Source, {"hotel_id"}, DIM_hotel, {"hotel_id"}, "DIM_hotel", JoinKind.Inner),
+				  #"DIM_hotel développé" = Table.ExpandTableColumn(#"Requêtes fusionnées", "DIM_hotel", {"cleanliness_base", "comfort_base", "facilities_base", "location_base", "staff_base", "value_for_money_base"}, {"cleanliness_base", "comfort_base", "facilities_base", "location_base", "staff_base", "value_for_money_base"}),
+				  #"Colonnes supprimées du tableau croisé dynamique" = Table.UnpivotOtherColumns(#"DIM_hotel développé", {"review_id", "user_id", "hotel_id", "review_date", "score_overall", "cleanliness_base", "comfort_base", "facilities_base", "location_base", "staff_base", "value_for_money_base"}, "Attribut", "Valeur"),
+				  #"Colonnes renommées" = Table.RenameColumns(#"Colonnes supprimées du tableau croisé dynamique", {{"Attribut", "Critere"}, {"Valeur", "Score_Reel"}}),
+				  #"Colonne conditionnelle insérée" = Table.AddColumn(#"Colonnes renommées", "Score_Base", each if [Critere] = "score_cleanliness" then [cleanliness_base] else if [Critere] = "score_comfort" then [comfort_base] else if [Critere] = "score_facilities" then [facilities_base] else if [Critere] = "score_location" then [location_base] else if [Critere] = "score_staff" then [staff_base] else [value_for_money_base]),
+				  #"Colonnes supprimées" = Table.RemoveColumns(#"Colonne conditionnelle insérée", {"cleanliness_base", "comfort_base", "facilities_base", "location_base", "staff_base", "value_for_money_base"}),
+				  #"Colonnes renommées 1" = Table.RenameColumns(#"Colonnes supprimées", {{"Score_Reel", "Score_Review"}, {"Critere", "Criteria"}}),
+				  #"Valeur remplacée" = Table.ReplaceValue(#"Colonnes renommées 1", "score_cleanliness", "Cleanliness", Replacer.ReplaceValue, {"Criteria"}),
+				  #"Valeur remplacée 1" = Table.ReplaceValue(#"Valeur remplacée", "score_comfort", "Comfort", Replacer.ReplaceValue, {"Criteria"}),
+				  #"Valeur remplacée 2" = Table.ReplaceValue(#"Valeur remplacée 1", "score_facilities", "Facilities", Replacer.ReplaceValue, {"Criteria"}),
+				  #"Valeur remplacée 3" = Table.ReplaceValue(#"Valeur remplacée 2", "score_location", "Location", Replacer.ReplaceValue, {"Criteria"}),
+				  #"Valeur remplacée 4" = Table.ReplaceValue(#"Valeur remplacée 3", "score_value_for_money", "ValueForMoney", Replacer.ReplaceValue, {"Criteria"}),
+				  #"Valeur remplacée 5" = Table.ReplaceValue(#"Valeur remplacée 4", "score_staff", "Staff", Replacer.ReplaceValue, {"Criteria"}),
+				  #"Colonnes renommées 2" = Table.RenameColumns(#"Valeur remplacée 5", {{"score_overall", "Overall_Review"}}),
+				  #"Type de colonne changé" = Table.TransformColumnTypes(#"Colonnes renommées 2", {{"Score_Base", type number}})
+				in
+				  #"Type de colonne changé"
+
+	annotation PBI_ResultType = Table
+

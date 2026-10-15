@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 607,
+            "y": 275
+          },
+          "nodeIndex": "FACT_Reviews",
+          "nodeLineageTag": "2cd0b414-13fc-4192-a73f-7c2b50a3cb69",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 137.5,
+            "y": 0
+          },
+          "nodeIndex": "DIM_hotel",
+          "nodeLineageTag": "b8e9d778-428e-4a9a-8420-eef7f322feea",
+          "size": {
+            "height": 441,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 917,
+            "y": 673.75
+          },
+          "nodeIndex": "DIM_users",
+          "nodeLineageTag": "f064e8b5-af16-4fd5-894b-ac7d4a7613df",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1221.5,
+            "y": 0
+          },
+          "nodeIndex": "DAX",
+          "nodeLineageTag": "bf1bf5fd-d060-422c-b76e-489b4a099815",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1218.25,
+            "y": 133.5
+          },
+          "nodeIndex": "Dynamic Text",
+          "nodeLineageTag": "441e6bcd-d7ba-4569-923b-7315818f9a66",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 886.25,
+            "y": 0
+          },
+          "nodeIndex": "Dim_Date",
+          "nodeLineageTag": "2d64898d-012f-4a88-88fc-329391f63e13",
+          "size": {
+            "height": 245,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 257.25,
+            "y": 622.5
+          },
+          "nodeIndex": "Radar Hotels",
+          "nodeLineageTag": "6fae91e2-0449-48b3-a0bf-90901ef0e0f5",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Toutes les tables",
+      "zoomValue": 80,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Toutes les tables",
+  "defaultDiagram": "Toutes les tables"
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "a6d136a8c3f4ba9319d5",
+  "position": {
+    "x": 112.5741193047792,
+    "y": 37.005508505423528,
+    "z": 1000,
+    "height": 167.58620689655172,
+    "width": 968.45156210345476,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Page 1 : Vue d'ensemble et Performance Globale",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Objectif :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  },
+                  {
+                    "value": " offrir une vision macro de la santé du groupe et de la satisfaction client. ",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "KPIs :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  },
+                  {
+                    "value": " volume total de revues, Note globale moyenne (Avg_Combined_Score).....",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Visuels :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  },
+                  {
+                    "value": " carte géographique des hôtels, graphique en barres du score combiné ... ",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#1f446c"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "390691638e81314ba9b7"
+}

@@ -1,0 +1,131 @@
+/// Table des faits principale contenant l'historique des avis et évaluations clients pour l'ensemble des hôtels du groupe Azur Palace.
+/// 
+/// Granularité : Une ligne correspond à un avis unique rédigé par un utilisateur pour un séjour donné (review_id).
+/// 
+/// Axes d'analyse associés : Liée aux dimensions des hôtels (DIM_hotels) et des utilisateurs (DIM_users). Contient les différentes notes détaillées (propreté, confort, équipements, localisation, service et note globale).
+table FACT_Reviews
+	lineageTag: 2cd0b414-13fc-4192-a73f-7c2b50a3cb69
+
+	column review_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 036d40dd-20d1-4aa1-87c7-cad0c7372696
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = User
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 25bd1bd1-96a0-461b-a348-450b054d3779
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = User
+
+	column hotel_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ee8243c1-b8b1-4ede-af6d-bfcfd9c1164c
+		summarizeBy: none
+		sourceColumn: hotel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 585c1ee4-10e5-492f-92ec-b181fec54ef3
+		summarizeBy: none
+		sourceColumn: review_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column score_overall
+		dataType: double
+		formatString: 0.00
+		lineageTag: f329947a-dd0c-4295-b74c-e61d407f3e39
+		summarizeBy: none
+		sourceColumn: score_overall
+
+		annotation SummarizationSetBy = User
+
+	column score_cleanliness
+		dataType: double
+		lineageTag: f66a8e4e-48cb-4fd2-8fee-4541af2450e0
+		summarizeBy: sum
+		sourceColumn: score_cleanliness
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_comfort
+		dataType: double
+		lineageTag: e73751d8-c0b8-4741-8f49-a5bee776543e
+		summarizeBy: sum
+		sourceColumn: score_comfort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_facilities
+		dataType: double
+		lineageTag: cf8db46e-e7a1-42d8-a8b8-14c4de5f6506
+		summarizeBy: sum
+		sourceColumn: score_facilities
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_location
+		dataType: double
+		lineageTag: d6b1d154-c1f7-4665-b247-24f16ce6af0a
+		summarizeBy: sum
+		sourceColumn: score_location
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_staff
+		dataType: double
+		lineageTag: f2c076c8-7d41-4b22-b23f-0c50d59a482c
+		summarizeBy: sum
+		sourceColumn: score_staff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_value_for_money
+		dataType: double
+		lineageTag: 8195197e-05f3-49c9-9bb0-032d234fec29
+		summarizeBy: sum
+		sourceColumn: score_value_for_money
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FACT_Reviews = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\pujad\OneDrive - APS Consult\Documents\FORMATION\PowerBi\Hotel Chain\Dataset\reviews.csv"), [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]),
+				  #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Type de colonne changé" = Table.TransformColumnTypes(#"En-têtes promus", {{"review_id", Int64.Type}, {"user_id", Int64.Type}, {"hotel_id", Int64.Type}, {"review_date", type date}, {"score_overall", type text}, {"score_cleanliness", type text}, {"score_comfort", type text}, {"score_facilities", type text}, {"score_location", type text}, {"score_staff", type text}, {"score_value_for_money", type text}, {"review_text", type text}}, "fr"),
+				  #"Type de colonne changé avec les paramètres régionaux" = Table.TransformColumnTypes(#"Type de colonne changé", {{"score_overall", type number}, {"score_cleanliness", type number}, {"score_comfort", type number}, {"score_facilities", type number}, {"score_location", type number}, {"score_staff", type number}, {"score_value_for_money", type number}}, "en-US"),
+				  #"Colonnes supprimées" = Table.RemoveColumns(#"Type de colonne changé avec les paramètres régionaux", {"review_text"}),
+				  #"Lignes triées" = Table.Sort(#"Colonnes supprimées", {{"review_date", Order.Ascending}})
+				in
+				  #"Lignes triées"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,196 @@
+/// Description :
+/// Table de dimension contenant la liste et les caractéristiques de référence de chaque hôtel du groupe Azur Palace.
+/// 
+/// Granularité : Une ligne correspond à un hôtel unique (hotel_id).
+/// 
+/// Informations clés : Localisation (ville, pays, coordonnées géographiques) et caractéristiques de base (scores de référence, standing). Liée à la table des faits des avis.
+table DIM_hotel
+	lineageTag: b8e9d778-428e-4a9a-8420-eef7f322feea
+
+	column hotel_id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 31d3418f-91c4-42f5-8d5c-fcd6bad72bfb
+		summarizeBy: none
+		sourceColumn: hotel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_name
+		dataType: string
+		lineageTag: f1d32710-ef4e-42e2-b44a-44ca13b45469
+		summarizeBy: none
+		sourceColumn: hotel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 590b9ede-1394-4991-a5f2-099b524e8d7a
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 5da31b32-e2e9-4596-afb3-454be4bddddf
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column star_rating
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f33d1a41-d917-4371-8d2d-65ae56c08639
+		summarizeBy: sum
+		sourceColumn: star_rating
+
+		changedProperty = IsHidden
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: ce34cd8f-0a38-4c43-9cea-b722a8388c6d
+		dataCategory: Latitude
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lon
+		dataType: double
+		lineageTag: 5d2f75be-1807-4853-a188-c5f12b629f3d
+		dataCategory: Longitude
+		summarizeBy: sum
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cleanliness_base
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0f28d38a-cd8d-42e2-93b3-49dc9b744857
+		summarizeBy: sum
+		sourceColumn: cleanliness_base
+
+		annotation SummarizationSetBy = Automatic
+
+	column comfort_base
+		dataType: double
+		formatString: 0.00
+		lineageTag: 94f6e668-2750-4475-b5b9-ab2e3fc9616a
+		summarizeBy: sum
+		sourceColumn: comfort_base
+
+		annotation SummarizationSetBy = Automatic
+
+	column facilities_base
+		dataType: double
+		lineageTag: 1b542b28-bbe4-4efc-bc91-a44c8ccf3eb9
+		summarizeBy: sum
+		sourceColumn: facilities_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column location_base
+		dataType: double
+		formatString: 0.00
+		lineageTag: d1c34671-7e00-4109-9774-29067b25e074
+		summarizeBy: sum
+		sourceColumn: location_base
+
+		annotation SummarizationSetBy = Automatic
+
+	column staff_base
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9a5f9e52-2dea-43ad-bf8d-833a45b81ab3
+		summarizeBy: sum
+		sourceColumn: staff_base
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_for_money_base
+		dataType: double
+		formatString: 0.00
+		lineageTag: 12a40d30-c272-42d5-b3cb-0a610ceaa197
+		summarizeBy: sum
+		sourceColumn: value_for_money_base
+
+		annotation SummarizationSetBy = Automatic
+
+	column Performance_Status = ```
+			
+			VAR HotelScore = CALCULATE(MEDIAN(FACT_Reviews[score_overall]))
+			VAR GlobalBaseline = [Global Median Score]
+			RETURN
+			IF(
+			    HotelScore > GlobalBaseline, 
+			    "Above Global Median", 
+			    "Below or Equal"
+			)
+			```
+		lineageTag: 9984ac5e-82b6-46c9-ba6c-6ae7c2dddcce
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region = ```
+			
+			SWITCH(
+			    TRUE(),
+			    -- Americas
+			    DIM_hotel[country] IN {
+			        "United States", "Canada", "Mexico", "Brazil", "Argentina"
+			    }, "Americas",
+			    
+			    -- EMEA (Europe, Middle East, Africa)
+			    DIM_hotel[country] IN {
+			        "United Kingdom", "France", "Germany", "Italy", "Spain", 
+			        "Netherlands", "Russia", "Turkey", "United Arab Emirates", 
+			        "Egypt", "South Africa", "Nigeria"
+			    }, "EMEA",
+			    
+			    -- APAC (Asia-Pacific)
+			    DIM_hotel[country] IN {
+			        "Japan", "China", "Singapore", "Australia", "India", 
+			        "South Korea", "Thailand", "New Zealand"
+			    }, "APAC",
+			    
+			    "Other"
+			)
+			```
+		lineageTag: 4d304545-c60c-4ba1-bf85-fa70c9389247
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_hotel = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\pujad\OneDrive - APS Consult\Documents\FORMATION\PowerBi\Hotel Chain\Dataset\hotels.csv"), [Delimiter = ";", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Valeur remplacée" = Table.ReplaceValue(#"En-têtes promus", "96", "9.6", Replacer.ReplaceText, {"cleanliness_base"}),
+				  #"Type de colonne changé avec les paramètres régionaux" = Table.TransformColumnTypes(#"Valeur remplacée", {{"lat", type number}, {"lon", type number}, {"cleanliness_base", type number}, {"comfort_base", type number}, {"facilities_base", type number}, {"location_base", type number}, {"staff_base", type number}, {"value_for_money_base", type number}, {"hotel_id", Int64.Type}, {"star_rating", Int64.Type}}, "en-US"),
+				  #"Valeur remplacée 1" = Table.ReplaceValue(#"Type de colonne changé avec les paramètres régionaux", 3, 5, Replacer.ReplaceValue, {"star_rating"})
+				in
+				  #"Valeur remplacée 1"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,28 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DIM_hotel","FACT_Reviews","DIM_users","DAX","Dynamic Text","Radar Hotels"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DIM_hotel
+ref table FACT_Reviews
+ref table DateTableTemplate_f0a7c4f4-2f59-4464-94d5-3fdf2064b6c4
+ref table DIM_users
+ref table DAX
+ref table 'Dynamic Text'
+ref table Dim_Date
+ref table LocalDateTable_f62e491c-d97a-4ed8-a079-263f80140ee4
+ref table 'Radar Hotels'
+ref table LocalDateTable_bd998317-41e9-4da6-8c2d-a73d91259b23
+
+ref cultureInfo fr-FR
+

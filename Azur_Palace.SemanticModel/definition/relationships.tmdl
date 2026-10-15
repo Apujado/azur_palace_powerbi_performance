@@ -1,0 +1,35 @@
+relationship AutoDetected_f05b76c8-058f-4ecc-a337-111d5ace3665
+	fromColumn: FACT_Reviews.hotel_id
+	toColumn: DIM_hotel.hotel_id
+
+relationship AutoDetected_5e17d0c0-9b24-4b6b-b306-957b279a5d75
+	fromColumn: FACT_Reviews.user_id
+	toColumn: DIM_users.user_id
+
+relationship a591067f-6f32-4f34-b3cd-9c6be5dcdeb1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.Date
+	toColumn: LocalDateTable_f62e491c-d97a-4ed8-a079-263f80140ee4.Date
+
+relationship 78718b77-fbfc-11ff-ca33-0eeba4543efa
+	fromColumn: FACT_Reviews.review_date
+	toColumn: Dim_Date.Date
+
+relationship 48744a63-4247-dfc1-d591-798d70fbd9a1
+	isActive: false
+	fromColumn: DIM_users.join_date
+	toColumn: Dim_Date.Date
+
+relationship 95e24472-af3f-4639-bedd-c68e528b9b1b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Radar Hotels'.review_date
+	toColumn: LocalDateTable_bd998317-41e9-4da6-8c2d-a73d91259b23.Date
+
+relationship AutoDetected_1531c73e-3628-4470-9a00-720596c2cd4a
+	fromColumn: 'Radar Hotels'.hotel_id
+	toColumn: DIM_hotel.hotel_id
+
+relationship AutoDetected_19765b1c-5e69-497a-a6e7-3a2940ac97ab
+	fromColumn: 'Radar Hotels'.user_id
+	toColumn: DIM_users.user_id
+

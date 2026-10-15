@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Azur_Palace"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "61d0e3f9-cbc8-4a8e-9074-372e95c34404"
+  }
+}

@@ -1,0 +1,20 @@
+/// Mesures DAX pour dynamiser l'affichage
+table 'Dynamic Text'
+	lineageTag: 441e6bcd-d7ba-4569-923b-7315818f9a66
+
+	measure Today_str = FORMAT(TODAY(), "yyyy-MM-dd", "en-US")
+		lineageTag: b550fe34-e5cc-4561-917e-93e94ab8c7fb
+
+	partition 'Dynamic Text' = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Colonne 1" = _t]),
+				    #"Colonnes supprimées" = Table.RemoveColumns(Source,{"Colonne 1"})
+				in
+				  #"Colonnes supprimées"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

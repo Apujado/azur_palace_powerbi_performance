@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Azur_Palace"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1fd08de4-e1cf-443c-a37b-c6f7204007e4"
+  }
+}
