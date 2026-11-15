@@ -1,0 +1,267 @@
+/// Inventaire de mesures DAX
+table DAX
+	lineageTag: bf1bf5fd-d060-422c-b76e-489b4a099815
+
+	/// Total d'avis clients
+	measure Total_Reviews = COUNT(FACT_Reviews[review_id])
+		formatString: 0
+		displayFolder: Score Macro
+		lineageTag: c018fee9-d305-45d3-94a9-7e7aacbd0e54
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	/// Score médian global de satisfaction. 
+	measure 'Global Median Score' = CALCULATE(MEDIAN(FACT_Reviews[score_overall]), ALL(DIM_hotel))
+		displayFolder: Score Macro
+		lineageTag: 1fe20ca0-f365-4b6f-86e9-37f2c298dad6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Score médian de l'année précédente (YoY).
+	measure 'Global Median Score N-1' =
+			
+			CALCULATE(
+			    MEDIAN(FACT_Reviews[score_overall]),
+			    SAMEPERIODLASTYEAR(DIM_Date[Date]),
+			    ALL(DIM_hotel)
+			)
+		displayFolder: Time Intelligence Score Macro
+		lineageTag: a406a9ac-31a8-4a89-a2c7-e113bac8c688
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Écart de score absolu vs N-1.
+	measure 'Median Score YoY Delta' = [Global Median Score] - [Global Median Score N-1]
+		displayFolder: Time Intelligence Score Macro
+		lineageTag: 5d53b646-3552-4343-9044-1c6dc7f784b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Total d'avis clients de l'année précédente
+	measure 'Total_Reviews N-1' =
+			
+			CALCULATE(
+			    [Total_Reviews],
+			    SAMEPERIODLASTYEAR(DIM_Date[Date])
+			)
+		formatString: 0
+		displayFolder: Time Intelligence Score Macro
+		lineageTag: 0f17d323-2a72-4d6d-8aa7-f41cb623e0ad
+
+	/// Taux de croissance du volume d'avis client.
+	measure 'Total_Reviews YoY %' = ```
+			
+			VAR PrevYearReviews = [Total_Reviews N-1]
+			RETURN
+			DIVIDE(
+			    [Total_Reviews] - PrevYearReviews, 
+			    PrevYearReviews, 
+			    0
+			)
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Time Intelligence Score Macro
+		lineageTag: 8c6550ed-020a-485a-a5bc-e94301a2c780
+
+	/// Part du parc hôtelier au-dessus du standard.
+	measure '% Hotels Above Median' = ```
+			
+			VAR OverallMedian = [Global Median Score]
+			VAR TotalHotels = CALCULATE(DISTINCTCOUNT(DIM_hotel[hotel_id]), ALLSELECTED(DIM_hotel))
+			VAR HotelsAbove = 
+			    CALCULATE(
+			        DISTINCTCOUNT(DIM_hotel[hotel_id]),
+			        FILTER(
+			            ALLSELECTED(DIM_hotel),
+			            CALCULATE(MEDIAN(FACT_Reviews[score_overall])) >= OverallMedian
+			        )
+			    )
+			RETURN
+			    DIVIDE(HotelsAbove, TotalHotels, 0)
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Score Macro
+		lineageTag: dcd17ac3-e773-4cb6-98ab-4cc2ad2e9052
+
+	/// Région géographique affichant la meilleure performance.
+	measure 'Top Region Name' = ```
+			
+			VAR RegionScores = 
+			    ADDCOLUMNS(
+			        ALL(DIM_hotel[Region]),
+			        "@Score", CALCULATE(MEDIAN(FACT_Reviews[score_overall]))
+			    )
+			VAR MaxScore = MAXX(RegionScores, [@Score])
+			RETURN
+			    MAXX(
+			        FILTER(RegionScores, [@Score] = MaxScore),
+			        DIM_hotel[Region]
+			    )
+			```
+		displayFolder: Score Macro
+		lineageTag: b740349d-286e-4f03-8d54-a956783fd844
+
+	/// Score de la Région géographique affichant la meilleure performance.
+	measure 'Top Region Score' =
+			
+			VAR TopRegion = [Top Region Name]
+			RETURN
+			    CALCULATE(
+			        MEDIAN(FACT_Reviews[score_overall]),
+			        ALL(DIM_hotel[Region])
+			    )
+		displayFolder: Score Macro
+		lineageTag: 0f184fbd-3967-4589-891e-2c975ad28082
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Le critère le mieux noté au niveau global
+	measure 'Top Criteria' = ```
+			
+			VAR CriteriaScores = 
+			    ADDCOLUMNS(
+			        VALUES('Score Hotels'[Criteria]), 
+			        "@Score", CALCULATE(MEDIAN('Score Hotels'[Score_Review]))
+			    )
+			VAR MaxCriteriaScore = MAXX(CriteriaScores, [@Score])
+			RETURN
+			    MAXX(
+			        FILTER(CriteriaScores, [@Score] = MaxCriteriaScore),
+			        'Score Hotels'[Criteria]
+			    )
+			```
+		displayFolder: Score Macro
+		lineageTag: fb59a25f-4d2c-4f0e-a8f9-53a8474098d6
+
+	measure 'Score Review' = MEDIAN('Score Hotels'[Score_Review])
+		formatString: 0.0
+		displayFolder: Score Macro
+		lineageTag: cbbca3ce-2845-4383-9fab-f0e080d5c91f
+
+	measure 'Score Base' = MEDIAN('Score Hotels'[Score_Base])
+		formatString: 0.0
+		displayFolder: Score Macro
+		lineageTag: 44d8c3d1-bbc3-4a14-b817-961325dc851b
+
+	measure Criteria_Delta_Text =
+			
+			VAR _delta = [Score Review] - [Score Base]
+			RETURN
+			IF(_delta <> 0, FORMAT(_delta, "+0.0;-0.0;0.0"), BLANK())
+		displayFolder: Score Macro
+		lineageTag: 2cf5a377-9065-4540-8684-75ae1fe996de
+
+	measure Criteria_Delta_Color =
+			
+			VAR _delta = [Score Review] - [Score Base]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _delta > 0, "#2A9D8F", // Code couleur vert (assorti aux bulles/KPIs)
+			    _delta < 0, "#E06D53", // Code couleur rouge/orange alerte
+			    BLANK()
+			)
+		displayFolder: Viz Format Measures
+		lineageTag: 227ca7f7-7aff-4817-8f77-8096afa394e4
+
+	measure Median_Score_Delta_Formatted = ```
+			
+			VAR _Delta = [Median Score YoY Delta]
+			RETURN
+			IF(
+			    _Delta > 0, 
+			    "▲ +" & FORMAT(_Delta, "0.0") & " vs LY", 
+			    IF(_Delta < 0, "▼ " & FORMAT(_Delta, "0.0") & " vs LY", "➖ 0.0 vs LY")
+			)
+			```
+		displayFolder: Viz Format Measures
+		lineageTag: ddf18440-2cac-4564-bb33-2aacfab0ee28
+
+	measure Total_Reviews_YoY_Formatted = ```
+			
+			VAR _YoY = [Total_Reviews YoY %]
+			RETURN
+			IF(
+			    _YoY > 0, 
+			    "▲ +" & FORMAT(_YoY, "0.0%") & " vs LY", 
+			    IF(
+			        _YoY < 0, 
+			        "▼ " & FORMAT(_YoY, "0.0%") & " vs LY", 
+			        "➖ 0,0% vs LY"
+			    )
+			)
+			```
+		displayFolder: Viz Format Measures
+		lineageTag: 4be9ad6f-7535-4e16-9da6-2947463cea2c
+
+	measure '% Hotels Above Median YoY %' =
+			
+			VAR _CurrentRate = [% Hotels Above Median]
+			VAR _PrevRate = CALCULATE([% Hotels Above Median], SAMEPERIODLASTYEAR('Dim_Date'[Date]))
+			RETURN
+			DIVIDE(_CurrentRate - _PrevRate, _PrevRate)
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Time Intelligence Score Macro
+		lineageTag: c7ea9395-17f4-4f71-b68a-eab5ee977419
+
+	measure '% Hotels Above Median YoY Formatted' = ```
+			
+			VAR _YoY = [% Hotels Above Median YoY %]
+			RETURN
+			IF(
+			    _YoY > 0, 
+			    "▲ +" & FORMAT(_YoY, "0.0%") & " vs LY", 
+			    IF(
+			        _YoY < 0, 
+			        "▼ " & FORMAT(_YoY, "0.0%") & " vs LY", 
+			        "➖ 0.0% vs LY"
+			    )
+			)
+			```
+		displayFolder: Viz Format Measures
+		lineageTag: e2e5c0c1-818d-42b3-84e0-0a76f3a90d4f
+
+	measure Hotel_Status_Label = ```
+			
+			VAR _HotelScore = MEDIAN(FACT_Reviews[score_overall]) 
+			VAR _GlobalBaseline = CALCULATE([Global Median Score], ALL(DIM_hotel))
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _HotelScore > _GlobalBaseline, "🟢 Above Global Median",
+			    _HotelScore = _GlobalBaseline, "🟣 Equal to Median",
+			    "🟠 Below Global Median"
+			)
+			```
+		displayFolder: Viz Format Measures
+		lineageTag: 97872d3c-b478-49d0-83d1-d773630fe7e8
+
+	measure Map_Bubble_Color =
+			
+			VAR HotelScore = MEDIAN(FACT_Reviews[score_overall])
+			VAR GlobalBaseline = [Global Median Score]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    HotelScore > GlobalBaseline, "#2A9D8F",  -- Vert Performance
+			    HotelScore = GlobalBaseline, "#6A4C93",  -- Violet Neutre (Aligné)
+			    "#E06D53"                                -- Orange Alerte
+			)
+		displayFolder: Viz Format Measures
+		lineageTag: b4cc663c-8f75-4735-93a6-6d645a303560
+
+	measure Hotel_Location_Display = SELECTEDVALUE(DIM_hotel[city]) & ", " & SELECTEDVALUE(DIM_hotel[country])
+		displayFolder: Viz Format Measures
+		lineageTag: d5ebfca9-9254-4d1b-a7e1-26bed8f2b70f
+
+	partition DAX = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Colonne 1" = _t]),
+				    #"Colonnes supprimées" = Table.RemoveColumns(Source,{"Colonne 1"})
+				in
+				  #"Colonnes supprimées"
+
+	annotation PBI_ResultType = Table
+
