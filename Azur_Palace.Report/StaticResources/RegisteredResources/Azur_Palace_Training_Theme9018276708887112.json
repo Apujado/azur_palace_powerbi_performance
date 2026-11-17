@@ -513,5 +513,15 @@
         ]
       }
     }
+  },
+  "textClasses": {
+    "label": {
+      "color": "#FFFFFF",
+      "fontFace": "Constantia"
+    },
+    "callout": {
+      "fontFace": "Constantia",
+      "color": "#9f8329"
+    }
   }
 }

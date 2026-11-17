@@ -10,7 +10,7 @@ table DAX
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
-	/// Score médian global de satisfaction. 
+	/// Score médian global de satisfaction.
 	measure 'Global Median Score' = CALCULATE(MEDIAN(FACT_Reviews[score_overall]), ALL(DIM_hotel))
 		displayFolder: Score Macro
 		lineageTag: 1fe20ca0-f365-4b6f-86e9-37f2c298dad6

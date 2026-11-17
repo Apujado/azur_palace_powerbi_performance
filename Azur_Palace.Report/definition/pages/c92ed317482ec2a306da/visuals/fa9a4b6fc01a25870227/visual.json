@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "fa9a4b6fc01a25870227",
   "position": {
-    "x": 583.07277628032341,
-    "y": 753.85444743935307,
-    "z": 2002,
-    "height": 257.03504043126685,
-    "width": 1143.7196765498652,
-    "tabOrder": 2002
+    "x": 582.5615763546798,
+    "y": 872.51231527093591,
+    "z": 1000,
+    "height": 138.32512315270935,
+    "width": 498.76847290640393,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,75 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Objective:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": " Drill down into raw review feedback and audit the underlying data transformations.",
-                    "textStyle": {
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
                     "value": ""
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Core KPIs:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": " Criteria Breakdown (score_cleanliness, score_staff, etc.), Unpivoted Dataset Volume (300,000+ rows).",
-                    "textStyle": {
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Key Visuals:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": " Data Model Schema (Fact/Dim Relationships & Score_Hotels Table) and Granular Data Grid.",
-                    "textStyle": {
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
                   }
                 ],
                 "listType": "bullet"

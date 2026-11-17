@@ -4133,6 +4133,16 @@ cultureInfo fr-FR
 			          }
 			        },
 			        {
+			          "% Hotels > Global Median": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
 			          "🏆 % Hotels > Global Median": {
 			            "State": "Suggested",
 			            "Source": {
@@ -5850,68 +5860,35 @@ cultureInfo fr-FR
 			      ],
 			      "SemanticType": "Time"
 			    },
-			    "score_hotel.review_date.hiérarchie_de_date": {
+			    "dax.hotel_location_display": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Score Hotels",
-			          "VariationSource": "review_date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Hiérarchie de dates"
+			          "ConceptualEntity": "DAX",
+			          "ConceptualProperty": "Hotel_Location_Display"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "hiérarchie de date": {
+			          "hotel location display": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "hiérarchie de moment": {
+			          "Hotel_Location_Display": {
 			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.762
+			            "State": "Generated",
+			            "Weight": 0.99
 			          }
 			        },
 			        {
-			          "hiérarchie de period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.739
-			          }
-			        }
-			      ]
-			    },
-			    "score_hotel.review_date.année": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Score Hotels",
-			          "VariationSource": "review_date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Hiérarchie de dates",
-			          "HierarchyLevel": "Année"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "année": {
-			            "State": "Generated"
+			          "location display": {
+			            "State": "Generated",
+			            "Weight": 0.97
 			          }
 			        },
 			        {
-			          "review date année": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "review moment année": {
+			          "hotel locality display": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -5921,7 +5898,77 @@ cultureInfo fr-FR
 			          }
 			        },
 			        {
-			          "review period année": {
+			          "hotel placement display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "hotel scene display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "hotel venue display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "locality display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "placement display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "scene display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "venue display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "hotel address display": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -5929,131 +5976,9 @@ cultureInfo fr-FR
 			            },
 			            "Weight": 0.591
 			          }
-			        }
-			      ]
-			    },
-			    "score_hotel.review_date.trimestre": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Score Hotels",
-			          "VariationSource": "review_date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Hiérarchie de dates",
-			          "HierarchyLevel": "Trimestre"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "trimestre": {
-			            "State": "Generated"
-			          }
 			        },
 			        {
-			          "review date trimestre": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "review moment trimestre": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.609
-			          }
-			        },
-			        {
-			          "review period trimestre": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.591
-			          }
-			        }
-			      ]
-			    },
-			    "score_hotel.review_date.mois": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Score Hotels",
-			          "VariationSource": "review_date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Hiérarchie de dates",
-			          "HierarchyLevel": "Mois"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "mois": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "review date mois": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "review moment mois": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.609
-			          }
-			        },
-			        {
-			          "review period mois": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.591
-			          }
-			        }
-			      ]
-			    },
-			    "score_hotel.review_date.jour": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Score Hotels",
-			          "VariationSource": "review_date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Hiérarchie de dates",
-			          "HierarchyLevel": "Jour"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "jour": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "review date jour": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "review moment jour": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.609
-			          }
-			        },
-			        {
-			          "review period jour": {
+			          "hotel place display": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -7471,369 +7396,6 @@ cultureInfo fr-FR
 			    }
 			  },
 			  "Relationships": {
-			    "score_hotel_review_date_hiérarchie_de_date_has_score_hotel_review_date_trimestre": {
-			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "score_hotel.review_date.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "score_hotel.review_date.hiérarchie_de_date"
-			          }
-			        },
-			        "score_hotel.review_date.trimestre": {
-			          "Target": {
-			            "Entity": "score_hotel.review_date.trimestre"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "score_hotel.review_date.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "score_hotel.review_date.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_trimestres"
-			        }
-			      ]
-			    },
-			    "score_hotel_review_date_hiérarchie_de_date_has_score_hotel_review_date_année": {
-			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "score_hotel.review_date.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "score_hotel.review_date.hiérarchie_de_date"
-			          }
-			        },
-			        "score_hotel.review_date.année": {
-			          "Target": {
-			            "Entity": "score_hotel.review_date.année"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "score_hotel.review_date.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "score_hotel.review_date.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_années"
-			        }
-			      ]
-			    },
-			    "score_hotel_review_date_has_hiérarchie_de_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "score_hotel.review_date": {
-			          "Target": {
-			            "Entity": "score_hotel.review_date"
-			          }
-			        },
-			        "score_hotel.review_date.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "score_hotel.review_date.hiérarchie_de_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "score_hotel.review_date"
-			            },
-			            "Object": {
-			              "Role": "score_hotel.review_date.hiérarchie_de_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_dates_have_hiérarchie_de_dates"
-			        }
-			      ]
-			    },
-			    "dim_date_date_mois_has_dim_date_date_jour": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_date.date.mois": {
-			          "Target": {
-			            "Entity": "dim_date.date.mois"
-			          }
-			        },
-			        "dim_date.date.jour": {
-			          "Target": {
-			            "Entity": "dim_date.date.jour"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.mois"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.jour"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "moises_have_jour"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.jour"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "jour_have_moises"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_date.date.jour"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_date.date.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "jour_are_in_moises"
-			        }
-			      ]
-			    },
-			    "dim_date_date_trimestre_has_dim_date_date_mois": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_date.date.trimestre": {
-			          "Target": {
-			            "Entity": "dim_date.date.trimestre"
-			          }
-			        },
-			        "dim_date.date.mois": {
-			          "Target": {
-			            "Entity": "dim_date.date.mois"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.trimestre"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_have_moises"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.mois"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "moises_have_trimestres"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_date.date.mois"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_date.date.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "moises_are_in_trimestres"
-			        }
-			      ]
-			    },
-			    "dim_date_date_année_has_dim_date_date_trimestre": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_date.date.année": {
-			          "Target": {
-			            "Entity": "dim_date.date.année"
-			          }
-			        },
-			        "dim_date.date.trimestre": {
-			          "Target": {
-			            "Entity": "dim_date.date.trimestre"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.année"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.trimestre"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "années_have_trimestres"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.trimestre"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_have_années"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_date.date.trimestre"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_date.date.année"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "trimestres_are_in_années"
-			        }
-			      ]
-			    },
-			    "dim_date_date_hiérarchie_de_date_has_dim_date_date_jour": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_date.date.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "dim_date.date.hiérarchie_de_date"
-			          }
-			        },
-			        "dim_date.date.jour": {
-			          "Target": {
-			            "Entity": "dim_date.date.jour"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.jour"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_jour"
-			        }
-			      ]
-			    },
-			    "dim_date_date_hiérarchie_de_date_has_dim_date_date_mois": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_date.date.hiérarchie_de_date": {
-			          "Target": {
-			            "Entity": "dim_date.date.hiérarchie_de_date"
-			          }
-			        },
-			        "dim_date.date.mois": {
-			          "Target": {
-			            "Entity": "dim_date.date.mois"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_date.date.hiérarchie_de_date"
-			            },
-			            "Object": {
-			              "Role": "dim_date.date.mois"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_moises"
-			        }
-			      ]
-			    },
 			    "dim_date_date_hiérarchie_de_date_has_dim_date_date_trimestre": {
 			      "Binding": {
 			        "ConceptualEntity": "Dim_Date"
@@ -7863,7 +7425,7 @@ cultureInfo fr-FR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_trimestres1"
+			          "ID": "hiérarchie_de_dates_have_trimestres"
 			        }
 			      ]
 			    },
@@ -7896,7 +7458,7 @@ cultureInfo fr-FR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_années1"
+			          "ID": "hiérarchie_de_dates_have_années"
 			        }
 			      ]
 			    },
@@ -7930,6 +7492,52 @@ cultureInfo fr-FR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dates_have_hiérarchie_de_dates"
+			        }
+			      ]
+			    },
+			    "score_hotel_has_dim_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Score Hotels"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "score_hotel": {
+			          "Target": {
+			            "Entity": "score_hotel"
+			          }
+			        },
+			        "dim_date": {
+			          "Target": {
+			            "Entity": "dim_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "score_hotel"
+			            },
+			            "Object": {
+			              "Role": "dim_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "score_hotels_have_dim_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_date"
+			            },
+			            "Object": {
+			              "Role": "score_hotel"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_dates_have_score_hotels"
 			        }
 			      ]
 			    },
@@ -8622,6 +8230,39 @@ cultureInfo fr-FR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "score_hotels_have_overall_reviews"
+			        }
+			      ]
+			    },
+			    "DIM_hotel_has_dax_hotel_location_display": {
+			      "Binding": {
+			        "ConceptualEntity": "DIM_hotel"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "DIM_hotel": {
+			          "Target": {
+			            "Entity": "DIM_hotel"
+			          }
+			        },
+			        "dax.hotel_location_display": {
+			          "Target": {
+			            "Entity": "dax.hotel_location_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "DIM_hotel"
+			            },
+			            "Object": {
+			              "Role": "dax.hotel_location_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DIM_hotels_have_hotel_location_display"
 			        }
 			      ]
 			    },
@@ -10294,6 +9935,51 @@ cultureInfo fr-FR
 			        }
 			      ]
 			    },
+			    "DIM_hotel_in_dax_hotel_location_display": {
+			      "Binding": {
+			        "ConceptualEntity": "DIM_hotel"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "DIM_hotel": {
+			          "Target": {
+			            "Entity": "DIM_hotel"
+			          }
+			        },
+			        "dax.hotel_location_display": {
+			          "Target": {
+			            "Entity": "dax.hotel_location_display"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dax.hotel_location_display"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "DIM_hotel"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dax.hotel_location_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DIM_hotels_are_in_hotel_location_display"
+			        }
+			      ]
+			    },
 			    "FACT_review_in_dax_top_region_name": {
 			      "Binding": {
 			        "ConceptualEntity": "FACT_Reviews"
@@ -10722,20 +10408,20 @@ cultureInfo fr-FR
 			        }
 			      ]
 			    },
-			    "score_hotel_review_date_hiérarchie_de_date_has_score_hotel_review_date_mois": {
+			    "dim_date_date_hiérarchie_de_date_has_dim_date_date_mois": {
 			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
+			        "ConceptualEntity": "Dim_Date"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "score_hotel.review_date.hiérarchie_de_date": {
+			        "dim_date.date.hiérarchie_de_date": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.hiérarchie_de_date"
+			            "Entity": "dim_date.date.hiérarchie_de_date"
 			          }
 			        },
-			        "score_hotel.review_date.mois": {
+			        "dim_date.date.mois": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.mois"
+			            "Entity": "dim_date.date.mois"
 			          }
 			        }
 			      },
@@ -10743,32 +10429,32 @@ cultureInfo fr-FR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.hiérarchie_de_date"
+			              "Role": "dim_date.date.hiérarchie_de_date"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_moises1"
+			          "ID": "hiérarchie_de_dates_have_moises"
 			        }
 			      ]
 			    },
-			    "score_hotel_review_date_hiérarchie_de_date_has_score_hotel_review_date_jour": {
+			    "dim_date_date_hiérarchie_de_date_has_dim_date_date_jour": {
 			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
+			        "ConceptualEntity": "Dim_Date"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "score_hotel.review_date.hiérarchie_de_date": {
+			        "dim_date.date.hiérarchie_de_date": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.hiérarchie_de_date"
+			            "Entity": "dim_date.date.hiérarchie_de_date"
 			          }
 			        },
-			        "score_hotel.review_date.jour": {
+			        "dim_date.date.jour": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.jour"
+			            "Entity": "dim_date.date.jour"
 			          }
 			        }
 			      },
@@ -10776,32 +10462,32 @@ cultureInfo fr-FR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.hiérarchie_de_date"
+			              "Role": "dim_date.date.hiérarchie_de_date"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.jour"
+			              "Role": "dim_date.date.jour"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "hiérarchie_de_dates_have_jour1"
+			          "ID": "hiérarchie_de_dates_have_jour"
 			        }
 			      ]
 			    },
-			    "score_hotel_review_date_année_has_score_hotel_review_date_trimestre": {
+			    "dim_date_date_année_has_dim_date_date_trimestre": {
 			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
+			        "ConceptualEntity": "Dim_Date"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "score_hotel.review_date.année": {
+			        "dim_date.date.année": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.année"
+			            "Entity": "dim_date.date.année"
 			          }
 			        },
-			        "score_hotel.review_date.trimestre": {
+			        "dim_date.date.trimestre": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.trimestre"
+			            "Entity": "dim_date.date.trimestre"
 			          }
 			        }
 			      },
@@ -10809,33 +10495,33 @@ cultureInfo fr-FR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.année"
+			              "Role": "dim_date.date.année"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.trimestre"
+			              "Role": "dim_date.date.trimestre"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "années_have_trimestres1"
+			          "ID": "années_have_trimestres"
 			        },
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.trimestre"
+			              "Role": "dim_date.date.trimestre"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.année"
+			              "Role": "dim_date.date.année"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_années1"
+			          "ID": "trimestres_have_années"
 			        },
 			        {
 			          "Preposition": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.trimestre"
+			              "Role": "dim_date.date.trimestre"
 			            },
 			            "Prepositions": [
 			              {
@@ -10845,29 +10531,29 @@ cultureInfo fr-FR
 			              }
 			            ],
 			            "Object": {
-			              "Role": "score_hotel.review_date.année"
+			              "Role": "dim_date.date.année"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_are_in_années1"
+			          "ID": "trimestres_are_in_années"
 			        }
 			      ]
 			    },
-			    "score_hotel_review_date_trimestre_has_score_hotel_review_date_mois": {
+			    "dim_date_date_trimestre_has_dim_date_date_mois": {
 			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
+			        "ConceptualEntity": "Dim_Date"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "score_hotel.review_date.trimestre": {
+			        "dim_date.date.trimestre": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.trimestre"
+			            "Entity": "dim_date.date.trimestre"
 			          }
 			        },
-			        "score_hotel.review_date.mois": {
+			        "dim_date.date.mois": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.mois"
+			            "Entity": "dim_date.date.mois"
 			          }
 			        }
 			      },
@@ -10875,33 +10561,33 @@ cultureInfo fr-FR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.trimestre"
+			              "Role": "dim_date.date.trimestre"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "trimestres_have_moises1"
+			          "ID": "trimestres_have_moises"
 			        },
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.trimestre"
+			              "Role": "dim_date.date.trimestre"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "moises_have_trimestres1"
+			          "ID": "moises_have_trimestres"
 			        },
 			        {
 			          "Preposition": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            },
 			            "Prepositions": [
 			              {
@@ -10911,29 +10597,29 @@ cultureInfo fr-FR
 			              }
 			            ],
 			            "Object": {
-			              "Role": "score_hotel.review_date.trimestre"
+			              "Role": "dim_date.date.trimestre"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "moises_are_in_trimestres1"
+			          "ID": "moises_are_in_trimestres"
 			        }
 			      ]
 			    },
-			    "score_hotel_review_date_mois_has_score_hotel_review_date_jour": {
+			    "dim_date_date_mois_has_dim_date_date_jour": {
 			      "Binding": {
-			        "ConceptualEntity": "Score Hotels"
+			        "ConceptualEntity": "Dim_Date"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "score_hotel.review_date.mois": {
+			        "dim_date.date.mois": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.mois"
+			            "Entity": "dim_date.date.mois"
 			          }
 			        },
-			        "score_hotel.review_date.jour": {
+			        "dim_date.date.jour": {
 			          "Target": {
-			            "Entity": "score_hotel.review_date.jour"
+			            "Entity": "dim_date.date.jour"
 			          }
 			        }
 			      },
@@ -10941,33 +10627,33 @@ cultureInfo fr-FR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.jour"
+			              "Role": "dim_date.date.jour"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "moises_have_jour1"
+			          "ID": "moises_have_jour"
 			        },
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.jour"
+			              "Role": "dim_date.date.jour"
 			            },
 			            "Object": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "jour_have_moises1"
+			          "ID": "jour_have_moises"
 			        },
 			        {
 			          "Preposition": {
 			            "Subject": {
-			              "Role": "score_hotel.review_date.jour"
+			              "Role": "dim_date.date.jour"
 			            },
 			            "Prepositions": [
 			              {
@@ -10977,12 +10663,12 @@ cultureInfo fr-FR
 			              }
 			            ],
 			            "Object": {
-			              "Role": "score_hotel.review_date.mois"
+			              "Role": "dim_date.date.mois"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "jour_are_in_moises1"
+			          "ID": "jour_are_in_moises"
 			        }
 			      ]
 			    }

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cf271a6b1627b103ce14",
+  "position": {
+    "x": 171.57635467980296,
+    "y": 184.8768472906404,
+    "z": 3000,
+    "height": 103.74384236453201,
+    "width": 1017.487684729064,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Report Architecture: Workshop Overview",
+                    "textStyle": {
+                      "fontFamily": "Constantia",
+                      "fontSize": "40pt",
+                      "color": "#cccccc"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2f7e5289c80a50dd8846",
   "position": {
-    "x": 583.33333333333337,
-    "y": 305,
-    "z": 2001,
-    "height": 272.56064690026955,
-    "width": 1143.7196765498652,
-    "tabOrder": 2001
+    "x": 1004.1871921182266,
+    "y": 505.41871921182263,
+    "z": 0,
+    "height": 67.832512315270932,
+    "width": 750.14778325123154,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -19,104 +19,12 @@
               {
                 "textRuns": [
                   {
-                    "value": "Objective:",
+                    "value": "Customer Voice & Data Audit",
                     "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
+                      "fontFamily": "Constantia",
+                      "fontSize": "32pt",
+                      "color": "#e6e6e6"
                     }
-                  },
-                  {
-                    "value": " Compare actual customer satisfaction scores against target baselines across all hotel locations.",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Core KPIs:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": " Overall Hotel Score, Review Volume, Expected Target Variance (-0.1 to -0.2 gaps).",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Key Visuals:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": " Dual Horizontal Bar Chart (",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": "Reviews results vs Base expected",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontStyle": "italic",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  },
-                  {
-                    "value": " across Location, Cleanliness, Comfort, Staff, Facilities, and Value for Money).",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
                   }
                 ]
               }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2ba12e7630a36dfe0992",
   "position": {
-    "x": 960.295566502463,
-    "y": 409.65517241379308,
+    "x": 1190.3940886699506,
+    "y": 367.09359605911328,
     "z": 2000,
-    "height": 634.43349753694577,
-    "width": 937.6847290640394,
+    "height": 643.743842364532,
+    "width": 642.41379310344826,
     "tabOrder": 2000
   },
   "visual": {
@@ -118,21 +118,21 @@
             "zoom": {
               "expr": {
                 "Literal": {
-                  "Value": "1.12D"
+                  "Value": "0.5D"
                 }
               }
             },
             "centerLatitude": {
               "expr": {
                 "Literal": {
-                  "Value": "10.960531490722204D"
+                  "Value": "10.960531490722175D"
                 }
               }
             },
             "centerLongitude": {
               "expr": {
                 "Literal": {
-                  "Value": "33.309183886156006D"
+                  "Value": "28.104787272627277D"
                 }
               }
             },
@@ -224,8 +224,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0
+                      "ColorId": 0,
+                      "Percent": -0.1
                     }
                   }
                 }
@@ -523,8 +523,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0
+                      "ColorId": 6,
+                      "Percent": -0.25
                     }
                   }
                 }
@@ -540,6 +540,18 @@
               "expr": {
                 "Literal": {
                   "Value": "'Based on median overall scores and verified guest review'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
                 }
               }
             }
@@ -606,7 +618,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -619,7 +631,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -674,6 +686,19 @@
                       "Percent": 0.6
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

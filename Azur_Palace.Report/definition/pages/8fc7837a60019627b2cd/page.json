@@ -5,6 +5,25 @@
   "displayOption": "ActualSize",
   "height": 300,
   "width": 400,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#07101E'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
   "visibility": "HiddenInViewMode",
   "type": "Tooltip"
 }

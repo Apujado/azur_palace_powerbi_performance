@@ -2,18 +2,18 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
   "themeCollection": {
     "baseTheme": {
-      "name": "Fluent2-CY26SU09",
+      "name": "Fluent2-CY26SU10",
       "reportVersionAtImport": {
-        "visual": "2.13.0",
+        "visual": "2.14.0",
         "report": "3.4.0",
         "page": "2.3.1"
       },
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Azur_Palace_Training_Theme020496113762398016.json",
+      "name": "Azur_Palace_Training_Theme9018276708887112.json",
       "reportVersionAtImport": {
-        "visual": "2.13.0",
+        "visual": "2.14.0",
         "report": "3.4.0",
         "page": "2.3.1"
       },
@@ -59,8 +59,8 @@
       "type": "SharedResources",
       "items": [
         {
-          "name": "Fluent2-CY26SU09",
-          "path": "BaseThemes/Fluent2-CY26SU09.json",
+          "name": "Fluent2-CY26SU10",
+          "path": "BaseThemes/Fluent2-CY26SU10.json",
           "type": "BaseTheme"
         }
       ]
@@ -70,8 +70,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Azur_Palace_Training_Theme020496113762398016.json",
-          "path": "Azur_Palace_Training_Theme020496113762398016.json",
+          "name": "Azur_Palace_Training_Theme9018276708887112.json",
+          "path": "Azur_Palace_Training_Theme9018276708887112.json",
           "type": "CustomTheme"
         },
         {
@@ -80,8 +80,13 @@
           "type": "Image"
         },
         {
-          "name": "logo24767311362483835.jpg",
-          "path": "logo24767311362483835.jpg",
+          "name": "fond_acceuil8499774125484667.png",
+          "path": "fond_acceuil8499774125484667.png",
+          "type": "Image"
+        },
+        {
+          "name": "fond_page19323642984822281.png",
+          "path": "fond_page19323642984822281.png",
           "type": "Image"
         }
       ]

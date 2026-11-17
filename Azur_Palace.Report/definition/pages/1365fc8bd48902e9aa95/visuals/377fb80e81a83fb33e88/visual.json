@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "377fb80e81a83fb33e88",
   "position": {
-    "x": 236.74876847290639,
-    "y": 55.862068965517238,
+    "x": 441.57635467980293,
+    "y": 74.482758620689651,
     "z": 1000,
-    "height": 98.423645320197039,
+    "height": 77.142857142857139,
     "width": 832.61083743842357,
     "tabOrder": 1000
   },
@@ -21,9 +21,8 @@
                   {
                     "value": "Worldwide 5-Star Hotel Performance",
                     "textStyle": {
-                      "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
+                      "fontSize": "28pt",
+                      "color": "#cccccc"
                     }
                   }
                 ]
@@ -33,9 +32,8 @@
                   {
                     "value": "Macro-level insights into group health and guest satisfaction",
                     "textStyle": {
-                      "fontFamily": "Segoe UI Light",
-                      "fontSize": "20pt",
-                      "color": "#ffffff"
+                      "fontSize": "14pt",
+                      "color": "#cccccc"
                     }
                   }
                 ]

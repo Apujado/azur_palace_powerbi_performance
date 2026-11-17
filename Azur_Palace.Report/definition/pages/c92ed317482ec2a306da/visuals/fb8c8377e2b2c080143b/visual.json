@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "fb8c8377e2b2c080143b",
+  "position": {
+    "x": 133.00492610837438,
+    "y": 505.41871921182263,
+    "z": 2000,
+    "height": 67.832512315270932,
+    "width": 353.79310344827587,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Hotel Performance",
+                    "textStyle": {
+                      "fontFamily": "Constantia",
+                      "fontSize": "28pt",
+                      "color": "#e6e6e6"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
