@@ -1,51 +1,85 @@
-# 🏨 Azur Palace | Worldwide 5-Star Hotel Performance
+# 🏨 Azur Palace | Hotel Performance Dashboard
 
-> **Macro-level insights into group health and guest satisfaction** — Un projet Power BI avancé de pilotage hôtelier international, développé au format PBIP (Power BI Project), structuré en architecture en étoile et audité via l'intelligence artificielle (Protocoles MCP).
+> Power BI dashboard for a 5-star hotel group, designed to monitor guest satisfaction, hotel performance and regional benchmarking.
 
----
+## 📌 Overview
 
-## 📌 Vue d'ensemble
+Azur Palace is a Business Intelligence project focused on analysing the overall performance of a hotel portfolio. It transforms guest review data into actionable KPIs to support strategic decisions across the group.
 
-Le projet **Azur Palace** a pour objectif d'analyser la performance globale d'un groupe hôtelier 5 étoiles à l'échelle internationale. Il croise les données de satisfaction client (Guest Voice) avec les indicateurs macro-économiques et géographiques pour fournir aux décideurs une vision 360° de la santé des établissements et de la qualité de service.
+The project delivers clear business value by enabling:
 
----
+- faster visibility into the health of each hotel,
+- quick identification of underperforming sites,
+- regional and operational benchmarking,
+- tracking of satisfaction trends over time,
+- prioritisation of improvement actions on the most impactful levers.
 
-## 🏗️ Architecture & Modélisation des Données
+## 🔎 Key insights already visible
 
-Le modèle sémantique repose sur une **architecture en étoile (Star Schema)** rigoureuse, optimisée pour les performances du moteur VertiPaq :
+The dashboard helps surface the most relevant operational signals:
 
-* **`FACT_Reviews`** : Table de faits centralisant les évaluations, scores de satisfaction par catégorie et retours clients.
-* **`DIM_hotel`** : Référentiel des établissements (localisation, région, caractéristiques 5 étoiles).
-* **`DIM_users`** : Segmentation et typologie des clients / répondants.
-* **`DIM_Date`** : Calendrier complet gérant la Time Intelligence.
-* **`Radar Hotels`** : Tableaux virtuels et mesures pour l'analyse multicritère (Spider/Radar Charts).
+- global median satisfaction score for the group,
+- strongest and weakest regions,
+- hotels above and below the median benchmark,
+- criteria driving customer satisfaction,
+- year-over-year changes to detect positive or negative trends.
 
----
+## 🏗️ Data model
 
-## 📊 Périmètre Fonctionnel & Mesures DAX
+The semantic model follows a star schema with:
 
-Les mesures DAX sont structurées par dossiers d'affichage (*Display Folders*) :
+- `FACT_Reviews` : customer reviews and detailed scores
+- `DIM_hotel` : hotel metadata and location
+- `DIM_users` : guest profiles and segmentation
+- `Dim_Date` : date table for Time Intelligence
+- `DAX` : business KPIs and measures
+- `Score Hotels` : multi-criteria performance analysis
 
-* **Summary & KPI Globaux** : Score médian global, nombre total d'avis, pourcentage d'hôtels au-dessus de la médiane.
-* **Customer Voice (CX)** : Analyse détaillée des axes de satisfaction (*Propreté, Emplacement, Confort, Personnel, Rapport Qualité/Prix*).
-* **Time Intelligence & Tendances** : Comparatifs N-1, variations trimestrielles/mensuelles et dynamiques d'évolution.
+Data sources include `Assests/Dataset/hotels.csv`, `reviews.csv` and `users.csv`.
 
----
+## 📊 Report pages
 
-## 🤖 Gouvernance & Workflow Modern Data (PBIP & AI Audit)
+The project currently includes 2 built pages and 2 pages under development:
 
-Ce projet adopte les meilleures pratiques de développement moderne :
+1. `Summary` — overview and macro KPIs
+2. `Hotel Performance` — performance by hotel and region
+3. `Granular Customer Voice` — detailed customer feedback analysis
+4. `Hotel_Details` — detailed drill-down by hotel
 
-* **Format PBIP & TMDL** : Versionnage fin du code sous Git, facilitant la collaboration et le suivi des modifications.
-* **Principe "Zéro Dette Technique"** : Standardisation des variables DAX, gestion sécurisée des divisions (`DIVIDE`), et élimination des dépendances implicites.
-* **Audit & Qualité MCP** : Utilisation de modèles d'IA via le protocole MCP (Model Context Protocol) pour auditer le code DAX, détecter les goulots d'étranglement de performance et valider les bonnes pratiques de modélisation.
+## 🎯 Core KPIs
 
----
+The DAX layer covers:
 
-## 🛠️ Stack Technique
+- global median score,
+- review volume,
+- share of hotels above the median,
+- YoY comparison,
+- regional benchmarking,
+- top satisfaction drivers.
 
-* **Power BI Desktop** (Developer Mode / `.pbip`)
-* **VS Code** + Extension TMDL
-* **Git & GitHub** (Versionning)
-* **DAX & M** (Power Query)
-* **MCP / Gemini AI** (Code Review & Audit)
+## 🤖 Governance and workflow
+
+The project follows a modern Power BI workflow:
+
+- `PBIP` + `TMDL` structure,
+- Git/GitHub versioning,
+- standardised DAX measures,
+- quality review supported by an AI assistant (Copilot / MCP).
+
+## 🛠️ Tech stack
+
+- Power BI Desktop / `.pbip`
+- DAX and Power Query
+- TMDL
+- Git / GitHub
+- VS Code
+- AI assistant / MCP (Copilot)
+
+## 🚀 Getting started
+
+1. Open `Azur_Palace.pbip` in Power BI Desktop.
+2. Check the files under `Assests/Dataset`.
+3. Load the semantic model if needed.
+4. Explore the `Summary` and `Hotel Performance` pages.
+
+Azur Palace demonstrates the value of BI tools in transforming raw hotel data into concrete decision-making insights, highlighting the strengths, weaknesses and improvement opportunities of the group.
